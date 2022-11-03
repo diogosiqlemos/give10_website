@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['173.255.227.56']
 # Application definition
 
 INSTALLED_APPS = [
+    'give10.apps.Give10Config',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
