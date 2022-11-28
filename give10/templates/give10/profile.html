@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome to your tips list!</h1>
+
+<h2>Here are the tips you gave us already:</h2>
+
+<ul>
+    {% for tip in tip_list %}
+    <li>
+        <a href="{% url 'give10:tip_detail' tip.pk %}">{{tip}}</a>
+        <br>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+

@@ -1,19 +1,36 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>HELLO ANTONIO!</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-    <h2>Do you like Asterix?</h2>
-    <br>
-    <br>
-    {% load static %}
-    <img src="{% static 'give10/asterix.gif' %}" alt="My image">
+{% block content %}
+
+<h1>Welcome to GIVE 10!</h1>
+
+<h2>Just read an incredible book? Got back from an amazing place? Did a super useful course?</h2>
+
+<h2>We want to get some great tips from you (for any kind of think you want).</h2>
+
+<h2>We will share it with the whole world, so fell free to get some nice tips back as well.</h2>
 
 
-</body>
-</html>
+<img src="{% static 'give10/asterix.gif' %}" alt="My image">
+    
+
+<p>Total Tips Already Received: {{num_tips}}</p>
+<p>Users Already Giving tips: {{num_users}}</p>
+
+    {% if user.is_authenticated %}
+        <p>You are Logged In</p>
+        <p>Welcome: {{user.get_username}}</p>
+        <a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+    {% endif %}
+
+{% endblock %}
+
+
+    
+
+    
+

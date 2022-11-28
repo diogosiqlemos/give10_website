@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-_zy$$637@_n@&2*1r(5qlcqvws68cek^$t9h1h0m&08r5o5!s-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['173.255.227.56']
+ALLOWED_HOSTS = ['173.255.227.56', '127.0.0.1']
 
 
 # Application definition
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'DjangoApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['DjangoApp/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

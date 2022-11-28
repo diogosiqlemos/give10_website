@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Tip Delete</h1>
+    <h2>Do you really want to delete this tip?</h2>
+        {% csrf_token %}
+        <div class="form-group">
+        <h2>Tip title: {{tip.title}}</h2>
+        <form class="wide" action="." method="post">
+            {% csrf_token %}
+            <p class="submit">
+                <input class="cta" type="submit" value="Yes, delete the tip.">
+            </p>
+          </form>
+</div>
+
+{% endblock %}
