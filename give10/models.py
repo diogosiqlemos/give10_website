@@ -18,7 +18,6 @@ class Tip(models.Model):
     more_information = models.TextField(max_length=600)
     tip_date = models.DateField(null=True, blank=True)
     tip_giver = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
     link = models.URLField(null=True, blank=True)
 
     class Meta:
