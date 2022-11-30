@@ -17,16 +17,25 @@
 <body>
     
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="{% url 'give10:index' %}">Home</a>
-              <a class="nav-link" href="{% url 'give10:profile' %}">My Tips</a>
-              <a class="nav-link" href="{% url 'give10:new_tip' %}">New Tip</a>
-              <a class="nav-link" href="{% url 'give10:new_tiptype' %}">New Tip Type</a>
-              <a class="nav-link" href="{% url 'give10:signup' %}">New User</a>
-            </div>
-          </div>
+        <div class="container">
+              <div class="row">
+                <div class="col-sm-2">
+                  <a class="nav-link active" aria-current="page" href="{% url 'give10:index' %}">Home</a>
+                </div>
+                <div class="col-sm-2">
+                  <a class="nav-link" href="{% url 'give10:profile' %}">My Tips</a>
+                </div>
+                <div class="col-sm-2">
+                  <a class="nav-link" href="{% url 'give10:new_tip' %}">New Tip</a>
+                </div>
+                <div class="col-sm-2">
+                  <a class="nav-link" href="{% url 'give10:new_tiptype' %}">New Tip Type</a>
+                </div>
+                <div class="col-sm-2">
+                  <a class="nav-link" href="{% url 'give10:signup' %}">New User</a>
+                </div>
+              </div>
+              
         </div>
       </nav>
 
