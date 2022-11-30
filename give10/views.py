@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from datetime import date
 
 # Create your views here.
 
@@ -24,7 +25,7 @@ def index(request):
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('give10:index')
     template_name = 'give10/signup.html'
 
 
@@ -44,11 +45,12 @@ class TiptypeCreate(LoginRequiredMixin, CreateView):
 
 class TipCreate(LoginRequiredMixin, CreateView):
     model = Tip
-    fields = ['title','tiptype','why_10','more_information','tip_date','link']
+    fields = ['title','tiptype','why_10','more_information','link']
     success_url = reverse_lazy('give10:index')
 
     def form_valid(self, form):
         form.instance.tip_giver = self.request.user
+        form.instance.tip_date = date.today()
         return super().form_valid(form)
 
 class TipUpdate(LoginRequiredMixin, UpdateView):
