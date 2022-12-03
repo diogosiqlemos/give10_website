@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome to our search tips engine!</h1>
+<br>
+<h2>You can search by Tip Title, Tip Type and Tip Giver!</h2>
+<br>
+
+<form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'give10:search' %}" >
+            <input class="form-control mr-sm-2" type="search" name="search">
+            <button class="btn btn btn-outline-info my-2 my-sm-0" type="submit"> Search </button>
+</form>
+
+<h2>Here are the tip results of your search:</h2>
+
+<ul>
+    {% for tip in all_search_results %}
+    <li>
+        <a href="{% url 'give10:tip_detail' tip.pk %}">{{tip}} - {{tip.tip_giver}}</a>
+        <br>
+    </li>
+    {% empty %}
+        <h2>No results found</h2>
+    {% endfor %}
+</ul>
+
+{% endblock %}

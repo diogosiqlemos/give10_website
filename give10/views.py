@@ -37,6 +37,29 @@ class ViewByUser(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Tip.objects.filter(tip_giver = self.request.user).all()
 
+class ViewAll(LoginRequiredMixin, ListView):
+    model = Tip
+    template_name = 'give10/alltips.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Tip.objects.all()
+
+class SearchView(ListView):
+    model = Tip
+    template_name = 'give10/search.html'
+    context_object_name = 'all_search_results'
+
+    def get_queryset(self):
+        result = super(SearchView, self).get_queryset()
+        query = self.request.GET.get('search')
+        if query:
+            postresult = Tip.objects.filter(title__contains=query) | Tip.objects.filter(tiptype__name__contains=query) | Tip.objects.filter(tip_giver__username__contains=query)
+            result = postresult
+        else:
+            result = None
+        return result
+
 
 class TiptypeCreate(LoginRequiredMixin, CreateView):
     model = Tiptype
@@ -68,5 +91,4 @@ class TipDeleteView(LoginRequiredMixin, DeleteView):
 
 class TipDetail(LoginRequiredMixin, DetailView):
     model = Tip
-
 

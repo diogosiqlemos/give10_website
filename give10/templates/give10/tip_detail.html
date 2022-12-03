@@ -11,10 +11,11 @@
 <div>{{tip.tip_giver}}</div><br>
 <div>{{tip.link}}</div><br>
 <br>
+{% if tip.tip_giver == request.user %}
 <a href="{% url 'give10:tip_update' tip.pk %}">Update Tip</a>
 <br>
 <a href="{% url 'give10:tip_delete' tip.pk %}">Delete Tip</a>
-
+{% endif %}
 {% endblock %}
 
 
